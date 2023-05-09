@@ -12,7 +12,6 @@ function Todos() {
   return (
     <S.Container>
       <S.Title>To do list</S.Title>
-      {todoName}
       <CreateItemBox onChange={setTodoName} />
       <ItemList />
     </S.Container>
