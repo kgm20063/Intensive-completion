@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-import { Button } from "../../../components/Button";
+import { Button } from "../../../components/Button/styled";
 
 export const InputBox = styled.div`
   display: flex;
   gap: 4px;
   width: 100%;
-  &{Button} {
+  ${Button} {
     flex-grow: 1;
     flex-shrink: 0;
     padding: 4px 8px
