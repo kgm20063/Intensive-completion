@@ -10,13 +10,14 @@ function Todos() {
   const [todos, setTodos] = useState([]);
 
   const createTodo = () => {
+    setTodoName("");
     setTodos((prevState) => [...prevState, { id: prevState.length, name: todoName }]);
   };
 
   return (
     <S.Container>
       <S.Title>To do list</S.Title>
-      <CreateItemBox onChange={setTodoName} createTodo={createTodo} />
+      <CreateItemBox value={todoName} onChange={setTodoName} createTodo={createTodo} />
       <ItemList todos={todos} />
     </S.Container>
   );
