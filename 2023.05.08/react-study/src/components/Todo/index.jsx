@@ -3,11 +3,17 @@ import Button from "../Button";
 import * as S from "./styled";
 
 function Todo(props) {
+  const { deleteTodo } = props;
+
   return (
     <S.Container>
       <S.Title>{props.children}</S.Title>
-      <Button>중요</Button>
-      <Button>삭제</Button>
+      <S.Wrap>
+        <Button title="등록">✔</Button>
+        <Button title="삭제" onClick={deleteTodo}>
+          ✘
+        </Button>
+      </S.Wrap>
     </S.Container>
   );
 }
