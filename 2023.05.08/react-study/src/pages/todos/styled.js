@@ -11,7 +11,9 @@ export const Container = styled.div`
   padding: 16px;
 `;
 
-export const Title = styled.h2``;
+export const Title = styled.h1`
+  font-size: 40px;
+`;
 
 export const InputBox = styled.div`
   display: flex;
