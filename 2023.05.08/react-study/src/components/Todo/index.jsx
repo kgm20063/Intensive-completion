@@ -9,7 +9,7 @@ function Todo(props) {
     <S.Container>
       <S.Title>{props.children}</S.Title>
       <S.Wrap>
-        <Button title="등록">✔</Button>
+        <Button title="중요">✔</Button>
         <Button title="삭제" onClick={deleteTodo}>
           ✘
         </Button>
