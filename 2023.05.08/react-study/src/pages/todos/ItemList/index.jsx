@@ -1,21 +1,24 @@
+import Todo from "../../../components/Todo";
+import searchValue from "../../../components/SearchInput";
+
 import * as S from "./styled";
 
-import Todo from "../../../components/Todo";
-
-function ItemList({ todos, deleteTodo }) {
+function ItemList({ todos, deleteTodo, searchValue }) {
   return (
     <S.ItemList>
-      {todos.map(({ id, name }) => {
-        const handleDeleteTodo = () => {
-          deleteTodo(id);
-        };
+      {todos
+        .filter(({ name }) => name.includes(searchValue))
+        .map(({ id, name }) => {
+          const handleDeleteTodo = () => {
+            deleteTodo(id);
+          };
 
-        return (
-          <Todo key={id} deleteTodo={handleDeleteTodo}>
-            {name}
-          </Todo>
-        );
-      })}
+          return (
+            <Todo key={id} deleteTodo={handleDeleteTodo}>
+              {name}
+            </Todo>
+          );
+        })}
     </S.ItemList>
   );
 }
