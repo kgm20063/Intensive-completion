@@ -24,5 +24,5 @@ export const Input = styled.input`
   width: 100%;
   padding: 10px 5px;
   border: none;
-  box-shadow: 0 0 4.5px rgba(156, 156, 156, 04);
+  box-shadow: 0 0 4.5px rgba(156, 156, 156, 4);
 `;
