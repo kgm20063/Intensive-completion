@@ -25,5 +25,5 @@ export const Wrap = styled.div`
 
 export const Title = styled.p`
   font-size: 20px;
-  &
+  word-break: break-all;
 `;
