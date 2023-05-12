@@ -19,17 +19,11 @@ export const Wrap = styled.div`
     font-size: 20px;
     cursor: pointer;
     user-select: none;
-
-    &:first-child {
-      color: green;
-    }
-    &:last-child {
-      margin-left: 15px;
-      color: red;
-    }
+    color: red;
   }
 `;
 
 export const Title = styled.p`
   font-size: 20px;
+  &
 `;
