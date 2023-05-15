@@ -7,7 +7,7 @@ const initialState = {
 // reducer
 const todosSlice = createSlice({
   // reducer name
-  name: todos,
+  name: "todos",
   // reducer의 초기값
   initialState,
   // reducer의 action들
