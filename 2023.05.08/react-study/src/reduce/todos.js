@@ -11,10 +11,20 @@ const todosSlice = createSlice({
   // reducer의 초기값
   initialState,
   // reducer의 action들
+  // todos의 데이터를
   reducers: {
-    createTodo: (state, action) => {},
-    deleteTodo: (state, action) => {},
-    deleteSelectedTodos: (state, action) => {},
+    createTodo: (state, action) => {
+      const { payload } = action; // payload: {id: "21f9vn2n", name: "test1"}
+      state.todos = [...state.todos, payload];
+    },
+    deleteTodo: (state, action) => {
+      const { payload } = action;
+      state.todos = state.todos.filter((todo) => todo.id !== payload);
+    },
+    deleteSelectedTodos: (state, action) => {
+      const { payload } = action;
+      state.todos = state.todos.filter((todo) => !payload.selectedTodoIds.includes(todo.id));
+    },
   },
 });
 
