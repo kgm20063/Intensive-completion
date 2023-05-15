@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 
-import { createTodo, deleteTodo, deleteSelectedTodos } from "../../reduce/todos";
+import { setTodos, createTodo, deleteTodo, deleteSelectedTodos } from "../../reduce/todos";
 
 import * as S from "./styled";
 
@@ -13,7 +13,6 @@ import Button from "../../components/Button";
 
 function Todos() {
   const [todoName, setTodoName] = useState("");
-  const [tempTodos, setTodos] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -59,7 +58,7 @@ function Todos() {
   useEffect(() => {
     try {
       const parseTodos = JSON.parse(localStorage.getItem("todos"));
-      setTodos(parseTodos);
+      dispatch(setTodos(parseTodos));
     } catch (error) {
       console.log(error);
     }
