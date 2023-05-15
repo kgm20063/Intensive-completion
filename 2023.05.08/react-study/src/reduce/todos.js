@@ -13,6 +13,10 @@ const todosSlice = createSlice({
   // reducer의 action들
   // todos의 데이터를
   reducers: {
+    setTodos: (state, action) => {
+      const { payload } = action;
+      state.todos = payload;
+    },
     createTodo: (state, action) => {
       const { payload } = action; // payload: {id: "21f9vn2n", name: "test1"}
       state.todos = [...state.todos, payload];
@@ -28,5 +32,5 @@ const todosSlice = createSlice({
   },
 });
 
-export const { createTodo, deleteTodo, deleteSelectedTodos } = todosSlice.actions;
+export const { setTodos, createTodo, deleteTodo, deleteSelectedTodos } = todosSlice.actions;
 export default todosSlice.reducer;
