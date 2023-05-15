@@ -1,11 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  todos: [],
+};
+
 // reducer
 const todosSlice = createSlice({
   // reducer name
   name: todos,
   // reducer의 초기값
-  initialState: [],
+  initialState,
   // reducer의 action들
   reducers: {
     createTodo: (state, action) => {},
