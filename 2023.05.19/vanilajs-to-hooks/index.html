@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      let cureentStateKey = 0; // useState가 실행 된 횟수
+      const states = []; // state를 보관할 배열
+
+      function useState(initState) {
+        // key를 복사하여 따로 할당
+        const key = cureentStateKey;
+        // initState로 초기값을 설정
+        if (states.length === key) {
+          states.push(initState);
+        }
+
+        // state 할당
+        const state = states[key];
+        const setState = (newState) => {
+          // state를 직접 수정하는 것이 아닌, states 내부의 값을 수정
+          // (x) states = [...state, newState];
+          // (o) state[key] = newState;
+          states[key] = newState;
+          render();
+        };
+        cureentStateKey += 1;
+        return [state, setState];
+      }
+
+      function Counter() {
+        const [count, setCount] = useState(1); // state에는 항상 1이 들어간다.
+
+        window.increment = () => setCount(count + 1);
+        // function increment() {}
+
+        // tag를 return한다
+        return `
+          <div>
+            <strong>count: ${count} </strong>
+            <button onclick="increment()">증가</button>
+          </div>
+        `;
+      }
+
+      function Cat() {
+        const [cat, setCat] = useState("고양이");
+
+        window.meow = () => setCat(cat + " 야옹!");
+
+        return `
+   			 	<div>
+    		  	<strong>${cat}</strong>
+    		  	<button onclick="meow()">고양이의 울음소리</button>
+    			</div>
+ 				`;
+      }
+
+      const render = () => {
+        const $app = document.querySelector("#app"); // document의 id가 app인 element를 찾아서
+        $app.innerHTML = `
+					<div>
+    		  	${Counter()}
+    		  	${Cat()}
+    			</div>
+				`;
+        // 이 심에 cureentStateKey는 2가 될 것이다.
+        // 그래서 다시 0부터 접근할 수 있도록 값을 초기화 해야 한다.
+        cureentStateKey = 0;
+      };
+
+      render();
+    </script>
+  </body>
+</html>
