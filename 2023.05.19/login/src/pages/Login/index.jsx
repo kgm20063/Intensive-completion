@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import * as S from "./styled";
+import "./style.css";
 
 function Login() {
   const [userName, setUserName] = useState("");
@@ -11,7 +11,7 @@ function Login() {
 
   function handleClick() {
     if (userName !== "" && userId !== "" && userPw !== "") {
-      if (userName.match(regExp)) {
+      if (userName === regExp) {
         alert("특수문자 입력 불가능");
       }
     } else {
@@ -20,17 +20,30 @@ function Login() {
   }
 
   return (
-    <S.Container>
-      <S.Form>
-        <S.Title>로그인</S.Title>
-        <S.Input type="text" className="name" placeholder="이름" maxLength={5} minLength={2} onChange={setUserName} />
-        <S.Input type="text" className="id" placeholder="아이디" minLength={4} onChange={setUserId} />
-        <S.Input type="password" className="password" placeholder="비밀번호" minLength={8} onChange={setUserPw} />
-        <S.Button type="submit" onClick={handleClick}>
-          로그인
-        </S.Button>
-      </S.Form>
-    </S.Container>
+    <div className="container">
+      <h1 className="title">Login</h1>
+      <form>
+        <div className="inputWrap">
+          <input type="text" name="name" id="name" required maxLength={5} minLength={2} onChange={setUserName} />
+          <label for="name">NAME</label>
+        </div>
+        <div className="inputWrap">
+          <input type="text" name="id" id="id" required minLength={4} onChange={setUserId} />
+          <label for="id">ID</label>
+        </div>
+        <div className="inputWrap">
+          <input type="password" name="password" id="password" required minLength={8} onChange={setUserPw} />
+          <label for="password">PASSWORD</label>
+        </div>
+        <div className="btnWrap">
+          <button type="submit" onClick={handleClick}>
+            <Link to="./Main">
+              <p>Sign in</p>
+            </Link>
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 
