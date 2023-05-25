@@ -31,11 +31,12 @@ function App() {
 
   const addTodo = () => {
     setTodos((prevState) => [...prevState, { id: uuidv4(), name: todoName }]);
+    setTodoName("");
   };
 
   return (
     <div className="App">
-      <Input onChange={handleTodoName} />
+      <Input value={todoName} onChange={handleTodoName} />
       <button onClick={addTodo}>Todo 추가</button>
       <Input onChange={handleSearchValue} />
       <TodoList
