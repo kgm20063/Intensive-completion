@@ -25,7 +25,7 @@ function TodoList({
   editTodo,
 }: TodoListProps) {
   return (
-    <ul>
+    <ol>
       {todos
         .filter(({ name }) => name.includes(searchValue))
         .map(({ id, name }) => {
@@ -60,7 +60,7 @@ function TodoList({
             />
           );
         })}
-    </ul>
+    </ol>
   );
 }
 
