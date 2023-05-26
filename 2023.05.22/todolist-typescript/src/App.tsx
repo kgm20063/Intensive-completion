@@ -7,6 +7,7 @@ import Input from "./components/Input";
 import TodoList from "./components/TodoList";
 
 import type { Todo } from "./types/todo";
+import Button from "./components/Button";
 
 function App() {
   const [todoName, setTodoName] = useState<Todo["name"]>("");
@@ -66,7 +67,7 @@ function App() {
   return (
     <div className="App">
       <Input value={todoName} onChange={handleTodoName} onKeyUp={handleEnterPress} />
-      <button onClick={addTodo}>Todo 추가</button>
+      <Button onClick={addTodo}>Todo 추가</Button>
       <Input onChange={handleSearchValue} />
       <TodoList
         todos={todos}
