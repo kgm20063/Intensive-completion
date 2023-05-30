@@ -1,0 +1,44 @@
+import Todo from "../../../components/Todo";
+import searchValue from "../../../components/SearchInput";
+
+import * as S from "./styled";
+
+function ItemList({ todos, searchValue, deleteTodo, setSelectedTodoIds }) {
+  return (
+    <S.ItemList>
+      {todos
+        // 8. filter 함수를 사용해준다
+        //    includes로 todo의 name에 검색한 값이(searchValue) 있는지 확인한다
+        .filter(({ name }) => name.includes(searchValue))
+        .map(({ id, name }) => {
+          const handleDeleteTodo = () => {
+            deleteTodo(id);
+          };
+
+          const handleSelected = (checked) => {
+            if (checked) {
+              // checkbox가 check 되었을 때 (todo를 선택 했을 때)
+              // 기존에 선택 되어 있던 seletedTodoIds에 새로 선택한 todo의 id를 넣어준다.
+              // -> 새로운 todo를 선택했다
+              setSelectedTodoIds((prevState) => [...prevState, id]);
+            } else {
+              // checkbox가 check 풀렸을 때 (todo를 선택 해제 했을 때)
+              // 기존에 선택 되어 있던 seletedTodoIds에서
+              // 이미 선택 되어 있는 체크 해제 한 todo의 id를 seletedTodoIds 배열에서 지워준다.
+              // -> 선택 된 todo 삭제(체크 해제)
+              setSelectedTodoIds((prevState) => prevState.filter((prevId) => prevId !== id));
+            }
+            console.log({ id, checked });
+          };
+
+          return (
+            <Todo key={id} deleteTodo={handleDeleteTodo} handleSelected={handleSelected}>
+              {name}
+            </Todo>
+          );
+        })}
+    </S.ItemList>
+  );
+}
+
+export default ItemList;
